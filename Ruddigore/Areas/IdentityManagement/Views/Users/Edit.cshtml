@@ -1,0 +1,59 @@
+@model IdentityMgmt.Areas.IdentityManagement.Models.EditUserViewModel
+
+@{
+    ViewBag.Title = "Edit User";
+}
+
+<div class="page-header">
+    <h1>
+        Edit User Profile<small>
+            <i class="icon-double-angle-right"></i>
+            @Model.UserName
+        </small>
+    </h1>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("Edit", "Users", new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+                <h3 class="header smaller lighter blue">Roles</h3>
+                <div class="width-100">Check roles that will be assigned to the user and uncheck roles that will be removed from user's list</div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5">
+                        <div class="control-group">
+                            @foreach (var item in Model.RolesList)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="ace" />
+                                        <span class="lbl"> @item.Value</span>
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div><br />
+                <div class="form-actions">
+                    <a class="btn btn-app btn-sm" href="@Url.Action("Index", "Users")"><i class="ace-icon fa fa-arrow-left"></i> Go back</a> <button type="submit" class="btn btn-sm btn-app"><i class="ace-icon fa fa-check bigger-110"></i> Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
