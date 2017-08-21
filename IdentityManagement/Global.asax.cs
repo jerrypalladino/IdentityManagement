@@ -1,5 +1,5 @@
-﻿using IdentityMgmt.Areas.IdentityManagement.Helpers;
-using IdentityMgmt.Models;
+﻿using $safeprojectname$.Areas.IdentityManagement.Helpers;
+using $safeprojectname$.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +8,17 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace IdentityMgmt
+namespace $safeprojectname$
 {
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
-           // AreaRegistration.RegisterAllAreas();
+            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            IdentityMgmtDbContext context = new IdentityMgmtDbContext();
+            $safeprojectname$DbContext context = new $safeprojectname$DbContext();
             IdentityHelper.SeedIdentities(context);
         }
     }

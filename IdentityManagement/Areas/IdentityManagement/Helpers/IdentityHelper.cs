@@ -1,30 +1,30 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using IdentityMgmt.Models;
+using $safeprojectname$.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Helpers
+namespace $safeprojectname$.Areas.IdentityManagement.Helpers
 {
     public class IdentityHelper
     {
-        internal static void SeedIdentities(IdentityMgmtDbContext context)
+        internal static void SeedIdentities($safeprojectname$DbContext context)
         {
             string userName = "admin@admin.com";
             string password = "admin09";
-            var userManager = new IdentityMgmtUserManager(new IdentityMgmtUserStore(context));
-            var roleManager = new IdentityMgmtRoleManager(new IdentityMgmtRoleStore(context));
+            var userManager = new $safeprojectname$UserManager(new $safeprojectname$UserStore(context));
+            var roleManager = new $safeprojectname$RoleManager(new $safeprojectname$RoleStore(context));
             if (!roleManager.RoleExists("Administrator"))
             {
-                var roleresult = roleManager.Create(new IdentityMgmtRole("Administrator"));
+                var roleresult = roleManager.Create(new $safeprojectname$Role("Administrator"));
             }
-            IdentityMgmtUser user = userManager.FindByName(userName);
+            $safeprojectname$User user = userManager.FindByName(userName);
             if (user == null)
             {
-                user = new IdentityMgmtUser()
+                user = new $safeprojectname$User()
                 {
                     UserName = userName,
                     Email = userName,

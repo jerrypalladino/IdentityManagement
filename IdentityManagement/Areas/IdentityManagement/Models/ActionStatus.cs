@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Models
+namespace $safeprojectname$.Areas.IdentityManagement.Models
 {
     public class ActionStatus
     {

@@ -4,13 +4,13 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using IdentityMgmt.Areas.IdentityManagement.Models;
-using IdentityMgmt.Models;
+using $safeprojectname$.Areas.IdentityManagement.Models;
+using $safeprojectname$.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Controllers
+namespace $safeprojectname$.Areas.IdentityManagement.Controllers
 {
     [Authorize(Roles = "Administrator")]
     public class RolesController : Controller
@@ -19,19 +19,19 @@ namespace IdentityMgmt.Areas.IdentityManagement.Controllers
         {
         }
 
-        public RolesController(IdentityMgmtUserManager userManager,
-            IdentityMgmtRoleManager roleManager)
+        public RolesController($safeprojectname$UserManager userManager,
+            $safeprojectname$RoleManager roleManager)
         {
             UserManager = userManager;
             RoleManager = roleManager;
         }
 
-        private IdentityMgmtUserManager _userManager;
-        public IdentityMgmtUserManager UserManager
+        private $safeprojectname$UserManager _userManager;
+        public $safeprojectname$UserManager UserManager
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<IdentityMgmtUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<$safeprojectname$UserManager>();
             }
             set
             {
@@ -39,12 +39,12 @@ namespace IdentityMgmt.Areas.IdentityManagement.Controllers
             }
         }
 
-        private IdentityMgmtRoleManager _roleManager;
-        public IdentityMgmtRoleManager RoleManager
+        private $safeprojectname$RoleManager _roleManager;
+        public $safeprojectname$RoleManager RoleManager
         {
             get
             {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<IdentityMgmtRoleManager>();
+                return _roleManager ?? HttpContext.GetOwinContext().Get<$safeprojectname$RoleManager>();
             }
             private set
             {
@@ -69,7 +69,7 @@ namespace IdentityMgmt.Areas.IdentityManagement.Controllers
             }
             var role = await RoleManager.FindByIdAsync(id);
             // Get the list of Users in this Role
-            var users = new List<IdentityMgmtUser>();
+            var users = new List<$safeprojectname$User>();
 
             // Get the list of Users in this Role
             foreach (var user in UserManager.Users.ToList())
@@ -99,7 +99,7 @@ namespace IdentityMgmt.Areas.IdentityManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = new IdentityMgmtRole(roleViewModel.Name);
+                var role = new $safeprojectname$Role(roleViewModel.Name);
                 var roleresult = await RoleManager.CreateAsync(role);
                 if (!roleresult.Succeeded)
                 {

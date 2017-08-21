@@ -5,10 +5,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using IdentityMgmt.Models;
+using $safeprojectname$.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace IdentityMgmt
+namespace $safeprojectname$
 {
     public class EmailService : IIdentityMessageService
     {
@@ -28,18 +28,18 @@ namespace IdentityMgmt
         }
     }
 
-    public class IdentityMgmtUserManager : UserManager<IdentityMgmtUser, int>
+    public class $safeprojectname$UserManager : UserManager<$safeprojectname$User, int>
     {
-        public IdentityMgmtUserManager(IUserStore<IdentityMgmtUser, int> store)
+        public $safeprojectname$UserManager(IUserStore<$safeprojectname$User, int> store)
             : base(store)
         {
         }
 
-        public static IdentityMgmtUserManager Create(IdentityFactoryOptions<IdentityMgmtUserManager> options, IOwinContext context)
+        public static $safeprojectname$UserManager Create(IdentityFactoryOptions<$safeprojectname$UserManager> options, IOwinContext context)
         {
-            var manager = new IdentityMgmtUserManager(new IdentityMgmtUserStore(context.Get<IdentityMgmtDbContext>()));
+            var manager = new $safeprojectname$UserManager(new $safeprojectname$UserStore(context.Get<$safeprojectname$DbContext>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<IdentityMgmtUser, int>(manager)
+            manager.UserValidator = new UserValidator<$safeprojectname$User, int>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -62,11 +62,11 @@ namespace IdentityMgmt
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<IdentityMgmtUser, int>
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<$safeprojectname$User, int>
             {
                 MessageFormat = "Your security code is {0}"
             });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<IdentityMgmtUser, int>
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<$safeprojectname$User, int>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -77,7 +77,7 @@ namespace IdentityMgmt
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<IdentityMgmtUser, int>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<$safeprojectname$User, int>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
@@ -112,34 +112,34 @@ namespace IdentityMgmt
     }
 
     // Configure the application sign-in manager which is used in this application.
-    public class IdentityMgmtSignInManager : SignInManager<IdentityMgmtUser, int>
+    public class $safeprojectname$SignInManager : SignInManager<$safeprojectname$User, int>
     {
-        public IdentityMgmtSignInManager(IdentityMgmtUserManager userManager, IAuthenticationManager authenticationManager)
+        public $safeprojectname$SignInManager($safeprojectname$UserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(IdentityMgmtUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync($safeprojectname$User user)
         {
-            return user.GenerateUserIdentityAsync((IdentityMgmtUserManager)UserManager);
+            return user.GenerateUserIdentityAsync(($safeprojectname$UserManager)UserManager);
         }
 
-        public static IdentityMgmtSignInManager Create(IdentityFactoryOptions<IdentityMgmtSignInManager> options, IOwinContext context)
+        public static $safeprojectname$SignInManager Create(IdentityFactoryOptions<$safeprojectname$SignInManager> options, IOwinContext context)
         {
-            return new IdentityMgmtSignInManager(context.GetUserManager<IdentityMgmtUserManager>(), context.Authentication);
+            return new $safeprojectname$SignInManager(context.GetUserManager<$safeprojectname$UserManager>(), context.Authentication);
         }
     }
 
-    public class IdentityMgmtRoleManager : RoleManager<IdentityMgmtRole, int>
+    public class $safeprojectname$RoleManager : RoleManager<$safeprojectname$Role, int>
     {
-        public IdentityMgmtRoleManager(IRoleStore<IdentityMgmtRole, int> roleStore)
+        public $safeprojectname$RoleManager(IRoleStore<$safeprojectname$Role, int> roleStore)
              : base(roleStore)
         {
         }
 
-        public static IdentityMgmtRoleManager Create(IdentityFactoryOptions<IdentityMgmtRoleManager> options, IOwinContext context)
+        public static $safeprojectname$RoleManager Create(IdentityFactoryOptions<$safeprojectname$RoleManager> options, IOwinContext context)
         {
-            var manager = new IdentityMgmtRoleManager(new IdentityMgmtRoleStore(context.Get<IdentityMgmtDbContext>()));
+            var manager = new $safeprojectname$RoleManager(new $safeprojectname$RoleStore(context.Get<$safeprojectname$DbContext>()));
 
             return manager;
         }
@@ -148,16 +148,16 @@ namespace IdentityMgmt
         //{
         //    string userName = "admin@admin.com";
         //    string password = "admin09";
-        //    var userManager = new IdentityMgmtUserManager(new IdentityMgmtUserStore(context.Get<IdentityMgmtDbContext>()));
-        //    var roleManager = new IdentityMgmtRoleManager(new IdentityMgmtRoleStore(context.Get<IdentityMgmtDbContext>()));
+        //    var userManager = new $safeprojectname$UserManager(new $safeprojectname$UserStore(context.Get<$safeprojectname$DbContext>()));
+        //    var roleManager = new $safeprojectname$RoleManager(new $safeprojectname$RoleStore(context.Get<$safeprojectname$DbContext>()));
         //    if (!roleManager.RoleExists("Administrator"))
         //    {
-        //        var roleresult = roleManager.Create(new IdentityMgmtRole("Administrator"));
+        //        var roleresult = roleManager.Create(new $safeprojectname$Role("Administrator"));
         //    }
-        //    IdentityMgmtUser user = userManager.FindByName(userName);
+        //    $safeprojectname$User user = userManager.FindByName(userName);
         //    if (user == null)
         //    {
-        //        user = new IdentityMgmtUser()
+        //        user = new $safeprojectname$User()
         //        {
         //            UserName = userName,
         //            Email = userName,
@@ -173,15 +173,15 @@ namespace IdentityMgmt
         //}
     }
 
-    //public class IdentityMgmtRoleManager : RoleManager<IdentityRole>
+    //public class $safeprojectname$RoleManager : RoleManager<IdentityRole>
     //{
-    //    public IdentityMgmtRoleManager(IdentityMgmtRoleStore<IdentityMgmtRole> store) : base(store)
+    //    public $safeprojectname$RoleManager($safeprojectname$RoleStore<$safeprojectname$Role> store) : base(store)
     //    {
     //    }
-    //    public static IdentityMgmtRoleManager Create(IdentityFactoryOptions<IdentityMgmtRoleManager> options, IOwinContext context)
+    //    public static $safeprojectname$RoleManager Create(IdentityFactoryOptions<$safeprojectname$RoleManager> options, IOwinContext context)
     //    {
-    //        var roleStore = new RoleStore<IdentityRole>(context.Get<IdentityMgmtDbContext>());
-    //        return new IdentityMgmtRoleManager(roleStore);
+    //        var roleStore = new RoleStore<IdentityRole>(context.Get<$safeprojectname$DbContext>());
+    //        return new $safeprojectname$RoleManager(roleStore);
     //    }
     //}
 }

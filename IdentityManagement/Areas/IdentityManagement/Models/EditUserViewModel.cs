@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Models
+namespace $safeprojectname$.Areas.IdentityManagement.Models
 {
     public class EditUserViewModel
     {

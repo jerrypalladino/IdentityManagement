@@ -6,31 +6,31 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using IdentityMgmt.Models;
+using $safeprojectname$.Models;
 
-namespace IdentityMgmt.Controllers
+namespace $safeprojectname$.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        private IdentityMgmtSignInManager _signInManager;
-        private IdentityMgmtUserManager _userManager;
+        private $safeprojectname$SignInManager _signInManager;
+        private $safeprojectname$UserManager _userManager;
 
         public ManageController()
         {
         }
 
-        public ManageController(IdentityMgmtUserManager userManager, IdentityMgmtSignInManager signInManager)
+        public ManageController($safeprojectname$UserManager userManager, $safeprojectname$SignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
 
-        public IdentityMgmtSignInManager SignInManager
+        public $safeprojectname$SignInManager SignInManager
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<IdentityMgmtSignInManager>();
+                return _signInManager ?? HttpContext.GetOwinContext().Get<$safeprojectname$SignInManager>();
             }
             private set
             {
@@ -38,11 +38,11 @@ namespace IdentityMgmt.Controllers
             }
         }
 
-        public IdentityMgmtUserManager UserManager
+        public $safeprojectname$UserManager UserManager
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<IdentityMgmtUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<$safeprojectname$UserManager>();
             }
             private set
             {

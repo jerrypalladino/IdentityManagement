@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using IdentityMgmt.Models;
+using $safeprojectname$.Models;
 
-namespace IdentityMgmt
+namespace $safeprojectname$
 {
     public partial class Startup
     {
@@ -15,10 +15,10 @@ namespace IdentityMgmt
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(IdentityMgmtDbContext.Create);
-            app.CreatePerOwinContext<IdentityMgmtUserManager>(IdentityMgmtUserManager.Create);
-            app.CreatePerOwinContext<IdentityMgmtSignInManager>(IdentityMgmtSignInManager.Create);
-            app.CreatePerOwinContext<IdentityMgmtRoleManager>(IdentityMgmtRoleManager.Create);
+            app.CreatePerOwinContext($safeprojectname$DbContext.Create);
+            app.CreatePerOwinContext<$safeprojectname$UserManager>($safeprojectname$UserManager.Create);
+            app.CreatePerOwinContext<$safeprojectname$SignInManager>($safeprojectname$SignInManager.Create);
+            app.CreatePerOwinContext<$safeprojectname$RoleManager>($safeprojectname$RoleManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -31,7 +31,7 @@ namespace IdentityMgmt
                 {
                     // Enables the application to validate the security stamp when the user logs in.
                     // This is a security feature which is used when you change a password or add an external login to your account.  
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<IdentityMgmtUserManager, IdentityMgmtUser, int>(
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<$safeprojectname$UserManager, $safeprojectname$User, int>(
     validateInterval: TimeSpan.FromMinutes(30),
     regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
     getUserIdCallback: id => id.GetUserId<int>())

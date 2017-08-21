@@ -1,15 +1,15 @@
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
-using IdentityMgmt.Areas.IdentityManagement.Models;
-using IdentityMgmt.Models;
+using $safeprojectname$.Areas.IdentityManagement.Models;
+using $safeprojectname$.Models;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Helpers
+namespace $safeprojectname$.Areas.IdentityManagement.Helpers
 {
     public class IdentityModelHelper
     {
-        private readonly IdentityMgmtUserManager _userManager;
-        private IdentityMgmtRoleManager _roleManager;
-        public IdentityModelHelper(IdentityMgmtUserManager userManager, IdentityMgmtRoleManager roleManager)
+        private readonly $safeprojectname$UserManager _userManager;
+        private $safeprojectname$RoleManager _roleManager;
+        public IdentityModelHelper($safeprojectname$UserManager userManager, $safeprojectname$RoleManager roleManager)
         {
             Contract.Assert(null != userManager);
             Contract.Assert(null != roleManager);

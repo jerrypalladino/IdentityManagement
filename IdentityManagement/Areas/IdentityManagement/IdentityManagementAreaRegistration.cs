@@ -1,6 +1,6 @@
 using System.Web.Mvc;
 
-namespace IdentityMgmt.Areas.IdentityManagement
+namespace $safeprojectname$.Areas.IdentityManagement
 {
     public class IdentityManagementAreaRegistration : AreaRegistration
     {

@@ -7,48 +7,48 @@ using System;
 using Microsoft.Owin;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace IdentityMgmt.Models
+namespace $safeprojectname$.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     // New derived classes
-    public class IdentityMgmtUserRole : IdentityUserRole<int>
+    public class $safeprojectname$UserRole : IdentityUserRole<int>
     {
     }
 
-    public class IdentityMgmtUserClaim : IdentityUserClaim<int>
+    public class $safeprojectname$UserClaim : IdentityUserClaim<int>
     {
     }
 
-    public class IdentityMgmtUserLogin : IdentityUserLogin<int>
+    public class $safeprojectname$UserLogin : IdentityUserLogin<int>
     {
     }
 
-    public class IdentityMgmtRole : IdentityRole<int, IdentityMgmtUserRole>
+    public class $safeprojectname$Role : IdentityRole<int, $safeprojectname$UserRole>
     {
-        public IdentityMgmtRole() { }
-        public IdentityMgmtRole(string name) { Name = name; }
+        public $safeprojectname$Role() { }
+        public $safeprojectname$Role(string name) { Name = name; }
     }
 
-    public class IdentityMgmtUserStore : UserStore<IdentityMgmtUser, IdentityMgmtRole, int,
-        IdentityMgmtUserLogin, IdentityMgmtUserRole, IdentityMgmtUserClaim>
+    public class $safeprojectname$UserStore : UserStore<$safeprojectname$User, $safeprojectname$Role, int,
+        $safeprojectname$UserLogin, $safeprojectname$UserRole, $safeprojectname$UserClaim>
     {
-        public IdentityMgmtUserStore(IdentityMgmtDbContext context) : base(context)
+        public $safeprojectname$UserStore($safeprojectname$DbContext context) : base(context)
         {
         }
     }
-    //internal class IdentityMgmtRoleStore<T> : IRoleStore<IdentityMgmtRole, int>
-    public class IdentityMgmtRoleStore : RoleStore<IdentityMgmtRole, int, IdentityMgmtUserRole>
+    //internal class $safeprojectname$RoleStore<T> : IRoleStore<$safeprojectname$Role, int>
+    public class $safeprojectname$RoleStore : RoleStore<$safeprojectname$Role, int, $safeprojectname$UserRole>
     {
-        public IdentityMgmtRoleStore(IdentityMgmtDbContext context) : base(context)
+        public $safeprojectname$RoleStore($safeprojectname$DbContext context) : base(context)
         {
         }
     }
 
-    public class IdentityMgmtUser : IdentityUser<int, IdentityMgmtUserLogin, IdentityMgmtUserRole, IdentityMgmtUserClaim>
+    public class $safeprojectname$User : IdentityUser<int, $safeprojectname$UserLogin, $safeprojectname$UserRole, $safeprojectname$UserClaim>
     {
         public DateTime? ActiveUntil;
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(IdentityMgmtUserManager manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync($safeprojectname$UserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
@@ -57,10 +57,10 @@ namespace IdentityMgmt.Models
         }
     }
 
-    public class IdentityMgmtDbContext : IdentityDbContext<IdentityMgmtUser, IdentityMgmtRole, int,
-        IdentityMgmtUserLogin, IdentityMgmtUserRole, IdentityMgmtUserClaim>
+    public class $safeprojectname$DbContext : IdentityDbContext<$safeprojectname$User, $safeprojectname$Role, int,
+        $safeprojectname$UserLogin, $safeprojectname$UserRole, $safeprojectname$UserClaim>
     {
-        public IdentityMgmtDbContext()
+        public $safeprojectname$DbContext()
             : base("DefaultConnection")
         {
         }
@@ -69,16 +69,16 @@ namespace IdentityMgmt.Models
         {
             base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 
-            modelBuilder.HasDefaultSchema("adm").Entity<IdentityMgmtUser>().ToTable("User");
-            modelBuilder.HasDefaultSchema("adm").Entity<IdentityMgmtRole>().ToTable("Role");
-            modelBuilder.HasDefaultSchema("adm").Entity<IdentityMgmtUserRole>().ToTable("UserRole");
-            modelBuilder.HasDefaultSchema("adm").Entity<IdentityMgmtUserClaim>().ToTable("UserClaim");
-            modelBuilder.HasDefaultSchema("adm").Entity<IdentityMgmtUserLogin>().ToTable("UserLogin");
+            modelBuilder.HasDefaultSchema("adm").Entity<$safeprojectname$User>().ToTable("User");
+            modelBuilder.HasDefaultSchema("adm").Entity<$safeprojectname$Role>().ToTable("Role");
+            modelBuilder.HasDefaultSchema("adm").Entity<$safeprojectname$UserRole>().ToTable("UserRole");
+            modelBuilder.HasDefaultSchema("adm").Entity<$safeprojectname$UserClaim>().ToTable("UserClaim");
+            modelBuilder.HasDefaultSchema("adm").Entity<$safeprojectname$UserLogin>().ToTable("UserLogin");
         }
 
-        public static IdentityMgmtDbContext Create()
+        public static $safeprojectname$DbContext Create()
         {
-            return new IdentityMgmtDbContext();
+            return new $safeprojectname$DbContext();
         }
     }
 

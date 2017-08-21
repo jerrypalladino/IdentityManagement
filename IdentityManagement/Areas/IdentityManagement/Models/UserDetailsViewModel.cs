@@ -1,10 +1,10 @@
-using IdentityMgmt.Models;
+using $safeprojectname$.Models;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Models
+namespace $safeprojectname$.Areas.IdentityManagement.Models
 {
     public class UserDetailsViewModel
     {
-        public IdentityMgmtUser User { get; set; }
+        public $safeprojectname$User User { get; set; }
         public LockoutViewModel Lockout { get; set; }
     }
 }

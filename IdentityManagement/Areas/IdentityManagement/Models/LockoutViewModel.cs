@@ -1,6 +1,6 @@
 using System;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Models
+namespace $safeprojectname$.Areas.IdentityManagement.Models
 {
     public class LockoutViewModel
     {

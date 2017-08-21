@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Models
+namespace $safeprojectname$.Areas.IdentityManagement.Models
 {
     public class RoleViewModel
     {

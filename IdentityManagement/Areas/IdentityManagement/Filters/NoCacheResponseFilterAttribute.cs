@@ -1,7 +1,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Filters
+namespace $safeprojectname$.Areas.IdentityManagement.Filters
 {
     public class NoCacheResponseFilterAttribute : ActionFilterAttribute
     {

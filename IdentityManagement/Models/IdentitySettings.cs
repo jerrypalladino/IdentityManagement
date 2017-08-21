@@ -1,6 +1,6 @@
 using System;
 
-namespace IdentityMgmt.Models
+namespace $safeprojectname$.Models
 {
     public class IdentitySettings
     {

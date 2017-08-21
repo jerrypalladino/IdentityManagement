@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using IdentityMgmt.Areas.IdentityManagement.Models;
+using $safeprojectname$.Areas.IdentityManagement.Models;
 
-namespace IdentityMgmt.Areas.IdentityManagement.Helpers
+namespace $safeprojectname$.Areas.IdentityManagement.Helpers
 {
     public static class ErrorHelper
     {
